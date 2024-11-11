@@ -1,33 +1,23 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
-import Nav from "../components/Nav.astro";
 ---
 
 <Layout title="David Umiri">
-
-	<!-- Navegación -->
-  <Nav />
-
   <main class="p-6">
-    <h1 class="text-5xl text-white mb-8">Welcome to my Website</h1>
+    <h1 class="text-5xl text-white mb-8">Welcome to my Portfolio</h1>
 
     <!-- Contenedor responsivo para las tarjetas -->
+    <h2 class="text-3xl text-white mb-8">Projects</h2>
     <ul
       role="list"
       class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
     >
       <Card
         image="/images/github.png"
-        title="GitHub"
-        description="Explore my personal projects."
+        title="Project 1"
+        description="Description."
         link="https://github.com/DavidUmiri"
-      />
-      <Card
-        image="/images/linkedin.png"
-        title="LinkedIn"
-        description="Connect with me."
-        link="https://linkedin.com/in/davidumiri"
       />
     </ul>
   </main>

@@ -8,11 +8,36 @@ const navLinks = [
 ---
 
 <nav class="bg-gray-800 p-4">
-  <ul class="flex space-x-4">
-    {navLinks.map(link => (
-      <li>
-        <a href={link.href} class="text-white hover:text-gray-400">{link.label}</a>
-      </li>
-    ))}
-  </ul>
+  <div class="container mx-auto flex justify-between items-center">
+    <!-- Menú de Navegación -->
+    <ul class="flex space-x-4">
+      {
+        navLinks.map((link) => (
+          <li>
+            <a href={link.href} class="text-white hover:text-gray-400">
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <!-- Redes Sociales -->
+    <div class="flex space-x-4">
+      <a href="https://github.com/DavidUmiri">
+        <img
+          src="/images/github.png"
+          alt="GitHub David Umiri"
+          class="w-8 h-8"
+        />
+      </a>
+      <a href="https://linkedin.com/in/davidumiri">
+        <img
+          src="/images/linkedin.png"
+          alt="LinkedIn David Umiri"
+          class="w-8 h-8"
+        />
+      </a>
+    </div>
+  </div>
 </nav>
