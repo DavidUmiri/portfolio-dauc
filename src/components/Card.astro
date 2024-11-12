@@ -4,14 +4,17 @@ interface Props {
   title: string;
   description: string;
   link: string;
+  technologies: string[];
 }
 
-const { image, title, description, link } = Astro.props;
+const { image, title, description, link, technologies } = Astro.props;
 ---
 
-<li class="bg-white p-4 rounded-lg shadow-md space-y-4 flex flex-col items-center justify-between w-full min-w-[280px] max-w-sm">
+<li
+  class="bg-white p-4 rounded-lg shadow-md space-y-4 flex flex-col items-center justify-between w-full min-w-[280px] max-w-sm"
+>
   <!-- Imagen Responsiva -->
-  <img src={image} alt={title} class="w-10 h-10 object-cover mb-4" />
+  <img src={image} alt={title} class="w-30 h-30 object-cover mb-4" />
 
   <!-- Título -->
   <h2 class="text-lg font-semibold text-center truncate">{title}</h2>
@@ -23,4 +26,19 @@ const { image, title, description, link } = Astro.props;
   <a href={link} class="text-blue-600 hover:text-blue-800 text-center mt-2">
     {link}
   </a>
+
+  <!-- Tecnologías -->
+  <ul class="flex space-x-2">
+    {
+      technologies.map((technology) => (
+        <li>
+          <img
+            src={`/images/${technology.toLowerCase()}.png`}
+            alt={technology}
+            class="w-8 h-8"
+          />
+        </li>
+      ))
+    }
+  </ul>
 </li>

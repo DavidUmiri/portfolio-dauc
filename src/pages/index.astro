@@ -5,8 +5,8 @@ import Card from "../components/Card.astro";
 
 <Layout title="David Umiri">
   <main class="p-6">
-    <h1 class="text-5xl text-white mb-8">Welcome to my Portfolio</h1>
-    
+    <h1 class="text-5xl text-white mb-8">Welcome! I'm David Umiri</h1>
+
     <!-- Contenedor responsivo para las tarjetas -->
     <h2 class="text-3xl text-white mb-8">Projects</h2>
     <ul
@@ -14,10 +14,11 @@ import Card from "../components/Card.astro";
       class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
     >
       <Card
-        image="/images/github.png"
-        title="Project 1"
-        description="Description."
-        link="https://github.com/DavidUmiri"
+        image="/images/proyecto-buscar-imagenes.png"
+        title="Search Images"
+        description="This project is a web application that allows users to search for images on the internet and download them for free."
+        link="https://app-fotos-frontend.vercel.app/"
+        technologies={["nodejs", "react", "tailwindcss", "vercel"]}
       />
     </ul>
   </main>

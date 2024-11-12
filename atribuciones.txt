@@ -1,2 +1,4 @@
 github.png --> riajulislam
 linkedin.png --> riajulislam
+nodejs.png --> Freepik
+react.png --> Kiranshastry
