@@ -4,7 +4,7 @@ import Card from "../components/Card.astro";
 ---
 
 <Layout title="David Umiri">
-  <main class="p-6">
+  <main class="p-6 mt-16">
     <h1 class="text-5xl text-white mb-8">Welcome! I'm David Umiri 👋</h1>
 
     <p class="text-lg text-white mb-8">
@@ -24,6 +24,13 @@ import Card from "../components/Card.astro";
         description="This project is a web application that allows users to search for images on the internet and download them for free."
         link="https://app-fotos-frontend.vercel.app/"
         technologies={["nodejs", "react", "tailwindcss", "vercel"]}
+      />
+      <Card
+        image="/images/proyecto-quasar-pomodoro-to-do.png"
+        title="Pomodo + To Do List"
+        description="This project is a web application built with Quasar that helps users manage their tasks using the Pomodoro technique."
+        link="https://quasar-to-do-pomodoro.vercel.app/#/"
+        technologies={["quasar", "vue"]}
       />
     </ul>
   </main>
