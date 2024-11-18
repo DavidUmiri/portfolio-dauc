@@ -13,7 +13,7 @@ import Card from "../components/Card.astro";
     </p>
 
     <!-- Contenedor responsivo para las tarjetas -->
-    <h2 class="text-3xl text-white mb-8">Projects</h2>
+    <h2 id="projects" class="text-3xl text-white mb-8">Projects</h2>
     <ul
       role="list"
       class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
@@ -21,16 +21,16 @@ import Card from "../components/Card.astro";
       <Card
         image="/images/proyecto-buscar-imagenes.png"
         title="Search Images"
-        description="This project is a web application that allows users to search for images on the internet and download them for free."
+        description="This project is a web application that allows users to search for images using the Unsplash API."
         link="https://app-fotos-frontend.vercel.app/"
         technologies={["nodejs", "react", "tailwindcss", "vercel"]}
       />
       <Card
         image="/images/proyecto-quasar-pomodoro-to-do.png"
-        title="Pomodo + To Do List"
+        title="Pomodoro + To Do List"
         description="This project is a web application built with Quasar that helps users manage their tasks using the Pomodoro technique."
         link="https://quasar-to-do-pomodoro.vercel.app/#/"
-        technologies={["quasar", "vue"]}
+        technologies={["quasar", "vue", "vercel"]}
       />
     </ul>
   </main>
