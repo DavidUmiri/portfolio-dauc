@@ -7,5 +7,5 @@ import tailwind from '@astrojs/tailwind';
 export default defineConfig({
   integrations: [tailwind()],
   site: 'https://davidumiri.github.io',
-  base: 'portfolio-dauc',
+  base: '/portfolio-dauc',
 });
