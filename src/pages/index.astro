@@ -1,21 +1,24 @@
 ---
+// filepath: c:\Users\david\Downloads\portfolio-dauc\src\pages\index.astro
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
 ---
 
 <Layout title="David Umiri">
-  <main class="p-6 mt-16">
-    <h1 class="text-5xl text-white mb-8">Welcome! I'm David Umiri 👋</h1>
+  <main class="p-4 sm:p-8 md:p-16 mt-8 md:mt-16">
+    <h1 class="text-3xl sm:text-4xl md:text-5xl text-white mb-4 mt-4 sm:mb-6 md:mb-8">
+      Welcome! I'm David Umiri 👋
+    </h1>
 
-    <p class="text-lg text-white mb-8">
+    <p class="text-base sm:text-lg md:text-xl text-white mb-4 sm:mb-6 md:mb-8">
       Web Application Developer passionate about functional and well-designed solutions. My core skills include proficiency in modern technologies such as HTML, CSS, JavaScript, PHP and Java, as well as frameworks such as Vue.js and Spring Boot. I have worked with the WordPress CMS in several projects, which has allowed me to acquire a comprehensive view of the web development lifecycle, from conception to implementation and maintenance.
     </p>
 
     <!-- Contenedor responsivo para las tarjetas -->
-    <h2 id="code-projects" class="text-3xl text-white mb-8">Code Projects</h2>
-    <ul
-      role="list"
-      class="flex gap-5 flex-wrap">
+    <h2 id="code-projects" class="text-2xl sm:text-3xl md:text-4xl text-white mb-4 sm:mb-6 md:mb-8">
+      Code Projects
+    </h2>
+    <ul role="list" class="flex flex-col sm:flex-row gap-4 sm:gap-5 flex-wrap">
       <Card
         image="/portfolio-dauc/images/proyecto-buscar-imagenes.png"
         title="Search Images"
@@ -31,11 +34,11 @@ import Card from "../components/Card.astro";
         technologies={["quasar", "vue", "vercel"]}
       />
     </ul>
-    <br><br>
-    <h2 id="wordpress-projects" class="text-3xl text-white mb-8">WordPress Projects</h2>
-    <ul
-      role="list"
-      class="flex gap-5 flex-wrap">
+
+    <h2 id="wordpress-projects" class="mt-10 text-2xl sm:text-3xl md:text-4xl text-white mb-4 sm:mb-6 md:mb-8">
+      WordPress Projects
+    </h2>
+    <ul role="list" class="flex flex-col sm:flex-row gap-4 sm:gap-5 flex-wrap">
       <Card
         image="/portfolio-dauc/images/inmasan-tecnologia.png"
         title="Inmasan Tecnología"
