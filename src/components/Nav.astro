@@ -51,7 +51,7 @@ const navLinks = [
   </div>
 
   <!-- Menú desplegable para móviles -->
-  <div id="mobile-menu" class="hidden sm:hidden fixed top-0 left-0 w-2/3 h-full bg-gray-800 z-20">
+  <div id="mobile-menu" class="fixed top-0 left-0 w-2/3 h-full bg-gray-800 z-20 transition-transform transform -translate-x-full sm:hidden">
     <div class="flex justify-between items-center p-4">
       <div class="text-white text-xl">Menu</div>
       <button id="close-btn" class="text-white focus:outline-none">
@@ -81,22 +81,26 @@ const navLinks = [
   const menuItems = document.querySelectorAll('.menu-item');
 
   menuBtn.addEventListener('click', () => {
-    mobileMenu.classList.toggle('hidden');
+    mobileMenu.classList.toggle('-translate-x-full');
+    mobileMenu.classList.toggle('translate-x-0');
   });
 
   closeBtn.addEventListener('click', () => {
-    mobileMenu.classList.add('hidden');
+    mobileMenu.classList.add('-translate-x-full');
+    mobileMenu.classList.remove('translate-x-0');
   });
 
   window.addEventListener('click', (e) => {
     if (!mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) {
-      mobileMenu.classList.add('hidden');
+      mobileMenu.classList.add('-translate-x-full');
+      mobileMenu.classList.remove('translate-x-0');
     }
   });
 
   menuItems.forEach(item => {
     item.addEventListener('click', () => {
-      mobileMenu.classList.add('hidden');
+      mobileMenu.classList.add('-translate-x-full');
+      mobileMenu.classList.remove('translate-x-0');
     });
   });
 </script>
