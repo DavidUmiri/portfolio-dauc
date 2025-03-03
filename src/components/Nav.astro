@@ -1,5 +1,4 @@
 ---
-// filepath: c:\Users\david\Downloads\portfolio-dauc\src\components\Nav.astro
 const navLinks = [
   { href: "./", label: "Home" },
   { href: "#code-projects", label: "Code Projects" },
@@ -66,7 +65,7 @@ const navLinks = [
       {
         navLinks.map((link) => (
           <li>
-            <a href={link.href} class="text-white hover:text-gray-400 block px-4 py-2">
+            <a href={link.href} class="text-white hover:text-gray-400 block px-4 py-2 menu-item">
               {link.label}
             </a>
           </li>
@@ -80,6 +79,7 @@ const navLinks = [
   const menuBtn = document.getElementById('menu-btn');
   const closeBtn = document.getElementById('close-btn');
   const mobileMenu = document.getElementById('mobile-menu');
+  const menuItems = document.querySelectorAll('.menu-item');
 
   menuBtn.addEventListener('click', () => {
     mobileMenu.classList.toggle('hidden');
@@ -93,5 +93,11 @@ const navLinks = [
     if (!mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) {
       mobileMenu.classList.add('hidden');
     }
+  });
+
+  menuItems.forEach(item => {
+    item.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+    });
   });
 </script>
