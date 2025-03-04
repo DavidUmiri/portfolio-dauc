@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://davidumiri.github.io/portfolio-dauc/sitemap.xml
