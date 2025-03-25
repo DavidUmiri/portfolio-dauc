@@ -2,7 +2,14 @@
 export default {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
-		extend: {},
+	  extend: {},
 	},
-	plugins: [],
-}
+	plugins: [require('daisyui')],
+	daisyui: {
+	  themes: ["dark", "light"],
+	  darkTheme: "dark",
+	  base: true,
+	  styled: true,
+	  utils: true,
+	}
+  }

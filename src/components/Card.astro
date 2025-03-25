@@ -1,45 +1,54 @@
 ---
+import { Image } from 'astro:assets';
 interface Props {
   image: string;
   title: string;
   description: string;
   link: string;
   technologies: string[];
+  imageLoading: string; // For main project image
+  techLoading: string; // For technology icons
 }
 
-const { image, title, description, link, technologies } = Astro.props;
+const { image, title, description, link, technologies, imageLoading, techLoading } = Astro.props;
 ---
 
 <li
   class="bg-white p-4 rounded-lg shadow-md space-y-4 flex flex-col items-center justify-between w-full max-w-sm hover:scale-105 transition-all duration-300 ease-in-out"
 >
-  <!-- Imagen -->
-  <img
+  <!-- Project image -->
+  <Image
     src={image}
     alt={title}
+    width={400}
+    height={192}
     class="w-full h-48 object-cover rounded-lg mb-4"
+    loading={imageLoading as "eager" | "lazy"}
   />
 
-  <!-- Título -->
+  <!-- Title -->
   <h2 class="text-lg font-semibold text-center truncate">{title}</h2>
 
-  <!-- Descripción -->
+  <!-- Description -->
   <p class="text-sm text-gray-600 text-center line-clamp-3">{description}</p>
 
-  <!-- Enlace -->
+  <!-- Link -->
   <a href={link} class="text-blue-600 hover:text-blue-800 text-center mt-2">
     {link}
   </a>
 
-  <!-- Tecnologías -->
+  <!-- Technologies -->
   <ul class="flex space-x-2 mt-2">
     {
       technologies.map((technology) => (
         <li>
-          <img
+          <Image
             src={`/portfolio-dauc/images/${technology.toLowerCase()}.webp`}
             alt={technology}
+            width={32}
+            height={32}
             class="w-8 h-8"
+            loading={techLoading as "eager" | "lazy"}
           />
         </li>
       ))
