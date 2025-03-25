@@ -4,22 +4,25 @@ const navLinks = [
   { href: "#code-projects", label: "Code Projects" },
   { href: "#wordpress-projects", label: "WordPress Projects" }
 ];
+
+// Importar el componente ThemeToggle
+import ThemeToggle from "./ThemeToggle.astro";
 ---
 
 <nav
-  class="bg-gray-800 px-4 sm:px-8 md:px-16 py-3 sm:py-4 md:py-5 fixed top-0 w-full z-10"
+  class="bg-white dark:bg-gray-800 px-4 sm:px-8 md:px-16 py-3 sm:py-4 md:py-5 fixed top-0 w-full z-10 shadow-md transition-colors duration-300"
 >
   <div class="container flex justify-between items-center mx-auto">
     <!-- Menú de Navegación -->
     <div class="flex items-center">
       <button
         id="menu-btn"
-        class="text-white focus:outline-none sm:hidden mr-4"
+        class="text-gray-800 dark:text-white focus:outline-none sm:hidden mr-4"
       >
         <div class="space-y-1">
-          <span class="block h-0.5 w-6 bg-white"></span>
-          <span class="block h-0.5 w-6 bg-white"></span>
-          <span class="block h-0.5 w-6 bg-white"></span>
+          <span class="block h-0.5 w-6 bg-gray-800 dark:bg-white"></span>
+          <span class="block h-0.5 w-6 bg-gray-800 dark:bg-white"></span>
+          <span class="block h-0.5 w-6 bg-gray-800 dark:bg-white"></span>
         </div>
       </button>
     </div>
@@ -31,7 +34,7 @@ const navLinks = [
       {
         navLinks.map((link) => (
           <li>
-            <a href={link.href} class="text-white hover:text-gray-400">
+            <a href={link.href} class="text-gray-800 dark:text-white hover:text-gray-600 dark:hover:text-gray-400">
               {link.label}
             </a>
           </li>
@@ -39,7 +42,7 @@ const navLinks = [
       }
     </ul>
 
-    <!-- Redes Sociales -->
+    <!-- Redes Sociales y Theme Toggle -->
     <div class="flex space-x-3 sm:space-x-5 items-center">
       <a href="https://github.com/DavidUmiri">
         <img
@@ -55,17 +58,21 @@ const navLinks = [
           class="w-5 h-5 sm:w-6 sm:h-6"
         />
       </a>
+      <!-- Añadir el ThemeToggle aquí -->
+      <div class="inline-block">
+        <ThemeToggle />
+      </div>
     </div>
   </div>
 
   <!-- Menú desplegable para móviles -->
   <div
     id="mobile-menu"
-    class="fixed top-0 left-0 w-2/3 h-full bg-gray-800 z-20 transition-all transform -translate-x-full sm:hidden duration-300 ease-in-out opacity-0"
+    class="fixed top-0 left-0 w-2/3 h-full bg-white dark:bg-gray-800 z-20 transition-all transform -translate-x-full sm:hidden duration-300 ease-in-out opacity-0 shadow-lg"
   >
     <div class="flex justify-between items-center p-4">
-      <div class="text-white text-xl">Menu</div>
-      <button id="close-btn" class="text-white focus:outline-none">
+      <div class="text-gray-800 dark:text-white text-xl">Menu</div>
+      <button id="close-btn" class="text-gray-800 dark:text-white focus:outline-none">
         <svg
           class="w-5 h-5"
           fill="none"
@@ -89,7 +96,7 @@ const navLinks = [
           <li>
             <a
               href={link.href}
-              class="text-white hover:text-gray-400 block px-4 py-2 menu-item"
+              class="text-gray-800 dark:text-white hover:text-gray-600 dark:hover:text-gray-400 block px-4 py-2 menu-item"
             >
               {link.label}
             </a>
