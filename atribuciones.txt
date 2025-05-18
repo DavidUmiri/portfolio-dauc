@@ -1,5 +1,1 @@
-github.png --> riajulislam
-linkedin.png --> riajulislam
-nodejs.png --> Freepik
-react.png --> Kiranshastry
-codigo.png --> icon wind
+Imágenes: riajulislam, Freepik, Kiranshastry, icon wind.

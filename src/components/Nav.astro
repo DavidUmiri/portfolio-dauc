@@ -5,8 +5,11 @@ const navLinks = [
   { href: "#wordpress-projects", label: "WordPress Projects" }
 ];
 
-// Importar el componente ThemeToggle
 import ThemeToggle from "./ThemeToggle.astro";
+
+// Añadir el estado inicial del idioma
+const currentPath = Astro.url.pathname;
+const isEnglish = currentPath.includes('/en');
 ---
 
 <nav
@@ -58,9 +61,28 @@ import ThemeToggle from "./ThemeToggle.astro";
           class="w-5 h-5 sm:w-6 sm:h-6"
         />
       </a>
-      <!-- Añadir el ThemeToggle aquí -->
       <div class="inline-block">
         <ThemeToggle />
+      </div>
+      <!-- Language Selector movido al final -->
+      <div class="relative group">
+        <button id="langButton" class="flex items-center space-x-1">
+          <img
+            src={`/portfolio-dauc/images/${isEnglish ? 'en' : 'es'}.png`}
+            alt={isEnglish ? 'English' : 'Español'}
+            class="w-5 h-5 sm:w-6 sm:h-6"
+          />
+        </button>
+        <div class="absolute right-0 mt-2 py-2 w-24 bg-white dark:bg-gray-800 rounded-md shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+          <a href="/es" class="flex items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">
+            <img src="/portfolio-dauc/images/es.png" alt="Español" class="w-5 h-5 mr-2" />
+            <span class="text-sm text-gray-800 dark:text-white">ES</span>
+          </a>
+          <a href="/en" class="flex items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">
+            <img src="/portfolio-dauc/images/en.png" alt="English" class="w-5 h-5 mr-2" />
+            <span class="text-sm text-gray-800 dark:text-white">EN</span>
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -107,77 +129,112 @@ import ThemeToggle from "./ThemeToggle.astro";
   </div>
 </nav>
 
-<script type="module">
-  const menuBtn = document.getElementById("menu-btn");
-  const closeBtn = document.getElementById("close-btn");
-  const mobileMenu = document.getElementById("mobile-menu");
-  const menuItems = document.querySelectorAll(".menu-item");
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const menuBtn = document.getElementById("menu-btn");
+    const closeBtn = document.getElementById("close-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const menuItems = document.querySelectorAll(".menu-item");
+    const languageLinks = document.querySelectorAll('[href="/en"], [href="/es"]');
 
-  function closeMenu() {
-    mobileMenu.classList.add("-translate-x-full", "opacity-0");
-    mobileMenu.classList.remove("translate-x-0", "opacity-100");
-    const menuList = mobileMenu.querySelector("ul");
-    menuList.classList.add("opacity-0", "translate-x-[-20px]");
-    menuList.classList.remove("opacity-100", "translate-x-0");
-  }
+    // Verificar que los elementos existan
+    if (!menuBtn || !closeBtn || !mobileMenu) return;
 
-  function openMenu() {
-    mobileMenu.classList.remove("-translate-x-full", "opacity-0");
-    mobileMenu.classList.add("translate-x-0", "opacity-100");
-    const menuList = mobileMenu.querySelector("ul");
-    setTimeout(() => {
-      menuList.classList.remove("opacity-0", "translate-x-[-20px]");
-      menuList.classList.add("opacity-100", "translate-x-0");
-    }, 150);
-  }
-
-  menuBtn.addEventListener("click", () => {
-    if (mobileMenu.classList.contains("-translate-x-full")) {
-      openMenu();
-    } else {
-      closeMenu();
+    function closeMenu() {
+      if (!mobileMenu) return;
+      mobileMenu.classList.add("-translate-x-full", "opacity-0");
+      mobileMenu.classList.remove("translate-x-0", "opacity-100");
+      const menuList = mobileMenu.querySelector("ul");
+      if (!menuList) return;
+      menuList.classList.add("opacity-0", "translate-x-[-20px]");
+      menuList.classList.remove("opacity-100", "translate-x-0");
     }
-  });
 
-  closeBtn.addEventListener("click", closeMenu);
-
-  window.addEventListener("click", (e) => {
-    if (!mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) {
-      closeMenu();
+    function openMenu() {
+      if (!mobileMenu) return;
+      mobileMenu.classList.remove("-translate-x-full", "opacity-0");
+      mobileMenu.classList.add("translate-x-0", "opacity-100");
+      const menuList = mobileMenu.querySelector("ul");
+      if (!menuList) return;
+      setTimeout(() => {
+        menuList.classList.remove("opacity-0", "translate-x-[-20px]");
+        menuList.classList.add("opacity-100", "translate-x-0");
+      }, 150);
     }
-  });
 
-  // Smooth scroll for menu items
-  menuItems.forEach((item) => {
-    item.addEventListener("click", (e) => {
-      e.preventDefault();
-      const href = item.getAttribute("href");
-
-      if (href.startsWith("#")) {
-        const element = document.querySelector(href);
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth" });
-        }
+    menuBtn.addEventListener("click", () => {
+      if (!mobileMenu) return;
+      if (mobileMenu.classList.contains("-translate-x-full")) {
+        openMenu();
       } else {
-        window.location.href = href;
+        closeMenu();
       }
+    });
 
-      setTimeout(closeMenu, 200);
+    closeBtn.addEventListener("click", closeMenu);
+
+    window.addEventListener("click", (e) => {
+      if (!mobileMenu || !menuBtn || !(e.target instanceof Node)) return;
+      if (!mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+        closeMenu();
+      }
+    });
+
+    menuItems.forEach((item) => {
+      item.addEventListener("click", (e) => {
+        e.preventDefault();
+        const href = item instanceof HTMLAnchorElement ? item.getAttribute("href") : null;
+        if (!href) return;
+
+        if (href.startsWith("#")) {
+          const element = document.querySelector(href);
+          if (element) {
+            element.scrollIntoView({ behavior: "smooth" });
+          }
+        } else {
+          window.location.href = href;
+        }
+
+        setTimeout(closeMenu, 200);
+      });
+    });
+
+    languageLinks.forEach(link => {
+      if (!(link instanceof HTMLAnchorElement)) return;
+      
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        const href = link.getAttribute("href");
+        if (!href) return;
+        
+        const newLang = href.replace("/", "");
+        const currentPath = window.location.pathname;
+        
+        let newPath = currentPath;
+        if (currentPath.includes("/en") || currentPath.includes("/es")) {
+          newPath = currentPath.replace(/(\/en|\/es)/, `/${newLang}`);
+        } else {
+          newPath = `/${newLang}${currentPath}`;
+        }
+        
+        window.location.href = newPath;
+      });
+    });
+
+    document.querySelectorAll("nav a").forEach((link) => {
+      if (!(link instanceof HTMLAnchorElement)) return;
+      const href = link.getAttribute("href");
+      if (href?.startsWith("#")) {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          const element = document.querySelector(href);
+          if (element) {
+            element.scrollIntoView({ behavior: "smooth" });
+          }
+        });
+      }
     });
   });
-
-  // Smooth scroll for navigation links
-  document.querySelectorAll("nav a").forEach((link) => {
-    link.addEventListener("click", (e) => {
-      const href = link.getAttribute("href");
-
-      if (href.startsWith("#")) {
-        e.preventDefault();
-        const element = document.querySelector(href);
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth" });
-        }
-      }
-    });
+</script>
   });
 </script>
