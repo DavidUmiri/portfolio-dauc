@@ -9,7 +9,7 @@ import ThemeToggle from "./ThemeToggle.astro";
 
 // Añadir el estado inicial del idioma
 const currentPath = Astro.url.pathname;
-const isEnglish = currentPath.includes('/en');
+const isEnglish = currentPath.includes('/en'); // Si no está en /en, está en español
 ---
 
 <nav
@@ -72,8 +72,8 @@ const isEnglish = currentPath.includes('/en');
             alt={isEnglish ? 'English' : 'Español'}
             class="w-5 h-5 sm:w-6 sm:h-6"
           />
-        </button>
-        <div class="absolute right-0 mt-2 py-2 w-24 bg-white dark:bg-gray-800 rounded-md shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">          <a href="/portfolio-dauc/es" class="flex items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">
+        </button>        <div class="absolute right-0 mt-2 py-2 w-24 bg-white dark:bg-gray-800 rounded-md shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+          <a href="/portfolio-dauc" class="flex items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">
             <img src="/portfolio-dauc/images/es.png" alt="Español" class="w-5 h-5 mr-2" />
             <span class="text-sm text-gray-800 dark:text-white">ES</span>
           </a>
@@ -196,23 +196,25 @@ const isEnglish = currentPath.includes('/en');
 
         setTimeout(closeMenu, 200);
       });
-    });
-
-    languageLinks.forEach(link => {
+    });    languageLinks.forEach(link => {
       if (!(link instanceof HTMLAnchorElement)) return;
       
       link.addEventListener("click", (e) => {
         e.preventDefault();
         const href = link.getAttribute("href");
         if (!href) return;
-          const newLang = href.replace("/portfolio-dauc/", "");
+        
+        // Si el href es /portfolio-dauc (español), usarlo directamente
+        if (href === "/portfolio-dauc") {
+          window.location.href = href;
+          return;
+        }
+        
+        // Para inglés, mantener la lógica existente
+        const newLang = "en"; // Solo tenemos /en como opción adicional
         const currentPath = window.location.pathname;
         
-        let newPath = currentPath;
-        if (currentPath.includes("/en") || currentPath.includes("/es")) {
-          newPath = currentPath.replace(/(\/en|\/es)/, `/${newLang}`);        } else {
-          newPath = `/portfolio-dauc/${newLang}${currentPath}`;
-        }
+        let newPath = `/portfolio-dauc/en`;
         window.location.href = newPath;
       });
     });
