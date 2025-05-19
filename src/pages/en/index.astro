@@ -3,25 +3,46 @@ import Layout from "../../layouts/Layout.astro";
 import Card from "../../components/Card.astro";
 ---
 
-<Layout title="David Umiri" description="David Umiri's personal portfolio showcasing web development projects and skills." keywords="David Umiri, web development, portfolio, projects">
+<Layout
+  title="David Umiri"
+  description="David Umiri's personal portfolio showcasing web development projects and skills."
+  keywords="David Umiri, web development, portfolio, projects"
+>
   <main class="p-4 sm:p-8 md:p-16 mt-8 md:mt-16">
-    <h1 class="text-gray-800 dark:text-white text-3xl sm:text-4xl md:text-5xl mb-4 mt-4 sm:mb-6 md:mb-8">
+    <h1
+      class="text-gray-800 dark:text-white text-3xl sm:text-4xl md:text-5xl mb-4 mt-4 sm:mb-6 md:mb-8"
+    >
       Welcome!
     </h1>
 
-    <p class="text-gray-700 dark:text-white text-base sm:text-lg md:text-xl mb-4 sm:mb-6 md:mb-8">
-      I'm David Umiri, a Web Application Developer passionate about functional and well-designed solutions. My core skills include proficiency in modern technologies such as HTML, CSS, JavaScript, PHP and Java, as well as frameworks such as Vue.js and Spring Boot. I have worked with the WordPress CMS in several projects, which has allowed me to acquire a comprehensive view of the web development lifecycle, from conception to implementation and maintenance.
-    </p>    <h2 id="code-projects" class="text-gray-800 dark:text-white text-2xl sm:text-3xl md:text-4xl mb-4 sm:mb-6 md:mb-8">
+    <p
+      class="text-gray-700 dark:text-white text-base sm:text-lg md:text-xl mb-4 sm:mb-6 md:mb-8"
+    >
+      I'm David, a Web Application Developer passionate about functional and
+      well-designed solutions. My core skills include proficiency in modern
+      technologies such as HTML, CSS, JavaScript, PHP and Java, as well as
+      frameworks such as Vue.js and Spring Boot. I have worked with the
+      WordPress CMS in several projects, which has allowed me to acquire a
+      comprehensive view of the web development lifecycle, from conception to
+      implementation and maintenance.
+    </p>
+    <h2
+      id="code-projects"
+      class="text-gray-800 dark:text-white text-2xl sm:text-3xl md:text-4xl mb-4 sm:mb-6 md:mb-8"
+    >
       Code Projects
     </h2>
-    <ul role="list" class="flex flex-col sm:flex-row gap-4 sm:gap-5 flex-wrap text-black">
+    <ul
+      role="list"
+      class="flex flex-col sm:flex-row gap-4 sm:gap-5 flex-wrap text-black"
+    >
       <Card
         image="/portfolio-dauc/images/proyecto-buscar-imagenes.webp"
         title="Search Images"
         description="A dynamic web application that enables users to find high-quality images using the Unsplash API. Designed with a modern interface for a seamless experience."
         link="https://app-fotos-frontend.vercel.app/"
         technologies={["nodejs", "react", "tailwindcss", "vercel"]}
-        imageLoading ="eager"
+        imageLoading="eager"
         techLoading="lazy"
       />
       <Card
@@ -30,22 +51,28 @@ import Card from "../../components/Card.astro";
         description="An all-in-one productivity app combining task management and the Pomodoro technique, built with Quasar to enhance focus and efficiency."
         link="https://quasar-to-do-pomodoro.vercel.app/#/"
         technologies={["quasar", "vue", "vercel"]}
-        imageLoading ="eager"
+        imageLoading="eager"
         techLoading="lazy"
       />
     </ul>
 
-    <h2 id="wordpress-projects" class="mt-10 text-gray-800 dark:text-white text-2xl sm:text-3xl md:text-4xl mb-4 sm:mb-6 md:mb-8">
+    <h2
+      id="wordpress-projects"
+      class="mt-10 text-gray-800 dark:text-white text-2xl sm:text-3xl md:text-4xl mb-4 sm:mb-6 md:mb-8"
+    >
       WordPress Projects
     </h2>
-    <ul role="list" class="flex flex-col sm:flex-row gap-4 sm:gap-5 flex-wrap text-black">
+    <ul
+      role="list"
+      class="flex flex-col sm:flex-row gap-4 sm:gap-5 flex-wrap text-black"
+    >
       <Card
         image="/portfolio-dauc/images/inmasan-tecnologia.webp"
         title="Inmasan Tecnología"
         description="A professional website developed for Inmasan Tecnología, showcasing their services and expertise in a visually engaging format."
         link="https://www.inmasan.com/"
         technologies={["wordpress", "elementor", "ovhcloud"]}
-        imageLoading ="lazy"
+        imageLoading="lazy"
         techLoading="lazy"
       />
       <Card
@@ -54,7 +81,7 @@ import Card from "../../components/Card.astro";
         description="A fast and responsive website crafted for Go Fast Web, designed to highlight their web development solutions effectively."
         link="https://gofastweb.es/"
         technologies={["wordpress", "elementor", "hostinger"]}
-        imageLoading ="lazy"
+        imageLoading="lazy"
         techLoading="lazy"
       />
       <Card
@@ -63,7 +90,7 @@ import Card from "../../components/Card.astro";
         description="A captivating blog dedicated to cat lovers, developed to deliver engaging content with an easy-to-navigate design."
         link="https://michinews.com/"
         technologies={["wordpress", "elementor", "hostinger"]}
-        imageLoading ="lazy"
+        imageLoading="lazy"
         techLoading="lazy"
       />
     </ul>

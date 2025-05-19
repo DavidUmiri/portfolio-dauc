@@ -20,7 +20,11 @@ const { title, description, keywords } = Astro.props;
     <meta name="description" content={description || "Default description"} />
     <meta name="keywords" content={keywords || "default, keywords"} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/webp" href="/portfolio-dauc/images/codigo.webp" />
+    <link
+      rel="icon"
+      type="image/webp"
+      href="/portfolio-dauc/images/codigo.webp"
+    />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
@@ -60,8 +64,14 @@ const { title, description, keywords } = Astro.props;
 
     /* Add fade-in animation for content */
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     main > * {

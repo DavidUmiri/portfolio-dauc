@@ -2,14 +2,14 @@
 const navLinks = [
   { href: "./", label: "Home" },
   { href: "#code-projects", label: "Code Projects" },
-  { href: "#wordpress-projects", label: "WordPress Projects" }
+  { href: "#wordpress-projects", label: "WordPress Projects" },
 ];
 
 import ThemeToggle from "./ThemeToggle.astro";
 
 // Añadir el estado inicial del idioma
 const currentPath = Astro.url.pathname;
-const isEnglish = currentPath.includes('/en'); // Si no está en /en, está en español
+const isEnglish = currentPath.includes("/en"); // Si no está en /en, está en español
 ---
 
 <nav
@@ -37,7 +37,10 @@ const isEnglish = currentPath.includes('/en'); // Si no está en /en, está en e
       {
         navLinks.map((link) => (
           <li>
-            <a href={link.href} class="text-gray-800 dark:text-white hover:text-gray-600 dark:hover:text-gray-400">
+            <a
+              href={link.href}
+              class="text-gray-800 dark:text-white hover:text-gray-600 dark:hover:text-gray-400"
+            >
               {link.label}
             </a>
           </li>
@@ -68,17 +71,34 @@ const isEnglish = currentPath.includes('/en'); // Si no está en /en, está en e
       <div class="relative group">
         <button id="langButton" class="flex items-center space-x-1">
           <img
-            src={`/portfolio-dauc/images/${isEnglish ? 'en' : 'es'}.png`}
-            alt={isEnglish ? 'English' : 'Español'}
+            src={`/portfolio-dauc/images/${isEnglish ? "en" : "es"}.png`}
+            alt={isEnglish ? "English" : "Español"}
             class="w-5 h-5 sm:w-6 sm:h-6"
           />
-        </button>        <div class="absolute right-0 mt-2 py-2 w-24 bg-white dark:bg-gray-800 rounded-md shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
-          <a href="/portfolio-dauc" class="flex items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">
-            <img src="/portfolio-dauc/images/es.png" alt="Español" class="w-5 h-5 mr-2" />
+        </button>
+        <div
+          class="absolute right-0 mt-2 py-2 w-24 bg-white dark:bg-gray-800 rounded-md shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300"
+        >
+          <a
+            href="/portfolio-dauc"
+            class="flex items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
+          >
+            <img
+              src="/portfolio-dauc/images/es.png"
+              alt="Español"
+              class="w-5 h-5 mr-2"
+            />
             <span class="text-sm text-gray-800 dark:text-white">ES</span>
           </a>
-          <a href="/portfolio-dauc/en" class="flex items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">
-            <img src="/portfolio-dauc/images/en.png" alt="English" class="w-5 h-5 mr-2" />
+          <a
+            href="/portfolio-dauc/en"
+            class="flex items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
+          >
+            <img
+              src="/portfolio-dauc/images/en.png"
+              alt="English"
+              class="w-5 h-5 mr-2"
+            />
             <span class="text-sm text-gray-800 dark:text-white">EN</span>
           </a>
         </div>
@@ -93,7 +113,10 @@ const isEnglish = currentPath.includes('/en'); // Si no está en /en, está en e
   >
     <div class="flex justify-between items-center p-4">
       <div class="text-gray-800 dark:text-white text-xl">Menu</div>
-      <button id="close-btn" class="text-gray-800 dark:text-white focus:outline-none">
+      <button
+        id="close-btn"
+        class="text-gray-800 dark:text-white focus:outline-none"
+      >
         <svg
           class="w-5 h-5"
           fill="none"
@@ -129,12 +152,14 @@ const isEnglish = currentPath.includes('/en'); // Si no está en /en, está en e
 </nav>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener("DOMContentLoaded", () => {
     const menuBtn = document.getElementById("menu-btn");
     const closeBtn = document.getElementById("close-btn");
     const mobileMenu = document.getElementById("mobile-menu");
     const menuItems = document.querySelectorAll(".menu-item");
-    const languageLinks = document.querySelectorAll('[href="/en"], [href="/es"]');
+    const languageLinks = document.querySelectorAll(
+      '[href="/en"], [href="/es"]'
+    );
 
     // Verificar que los elementos existan
     if (!menuBtn || !closeBtn || !mobileMenu) return;
@@ -182,7 +207,8 @@ const isEnglish = currentPath.includes('/en'); // Si no está en /en, está en e
     menuItems.forEach((item) => {
       item.addEventListener("click", (e) => {
         e.preventDefault();
-        const href = item instanceof HTMLAnchorElement ? item.getAttribute("href") : null;
+        const href =
+          item instanceof HTMLAnchorElement ? item.getAttribute("href") : null;
         if (!href) return;
 
         if (href.startsWith("#")) {
@@ -196,24 +222,25 @@ const isEnglish = currentPath.includes('/en'); // Si no está en /en, está en e
 
         setTimeout(closeMenu, 200);
       });
-    });    languageLinks.forEach(link => {
+    });
+    languageLinks.forEach((link) => {
       if (!(link instanceof HTMLAnchorElement)) return;
-      
+
       link.addEventListener("click", (e) => {
         e.preventDefault();
         const href = link.getAttribute("href");
         if (!href) return;
-        
+
         // Si el href es /portfolio-dauc (español), usarlo directamente
         if (href === "/portfolio-dauc") {
           window.location.href = href;
           return;
         }
-        
+
         // Para inglés, mantener la lógica existente
         const newLang = "en"; // Solo tenemos /en como opción adicional
         const currentPath = window.location.pathname;
-        
+
         let newPath = `/portfolio-dauc/en`;
         window.location.href = newPath;
       });
@@ -234,5 +261,5 @@ const isEnglish = currentPath.includes('/en'); // Si no está en /en, está en e
     });
   });
 </script>
-  });
-</script>
+});
+
