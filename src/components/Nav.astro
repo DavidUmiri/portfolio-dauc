@@ -15,92 +15,102 @@ const isEnglish = currentPath.includes("/en"); // Si no está en /en, está en e
 <nav
   class="bg-white dark:bg-gray-800 px-4 sm:px-8 md:px-16 py-3 sm:py-4 md:py-5 fixed top-0 w-full z-10 shadow-md transition-colors duration-300"
 >
-  <div class="container flex justify-between items-center mx-auto">
-    <!-- Menú de Navegación -->
-    <div class="flex items-center">
-      <button
-        id="menu-btn"
-        class="text-gray-800 dark:text-white focus:outline-none sm:hidden mr-4"
-      >
-        <div class="space-y-1">
-          <span class="block h-0.5 w-6 bg-gray-800 dark:bg-white"></span>
-          <span class="block h-0.5 w-6 bg-gray-800 dark:bg-white"></span>
-          <span class="block h-0.5 w-6 bg-gray-800 dark:bg-white"></span>
-        </div>
-      </button>
-    </div>
+  <div class="container mx-auto">
+    <div class="flex items-center justify-between">
+      <!-- IZQUIERDA: botón móvil + links (links visibles en sm+) -->
+      <div class="flex items-center space-x-4">
+        <button
+          id="menu-btn"
+          class="text-gray-800 dark:text-white focus:outline-none sm:hidden mr-2"
+        >
+          <div class="space-y-1">
+            <span class="block h-0.5 w-6 bg-gray-800 dark:bg-white"></span>
+            <span class="block h-0.5 w-6 bg-gray-800 dark:bg-white"></span>
+            <span class="block h-0.5 w-6 bg-gray-800 dark:bg-white"></span>
+          </div>
+        </button>
 
-    <ul
-      id="menu"
-      class="hidden sm:flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-5 items-center"
-    >
-      {
-        navLinks.map((link) => (
-          <li>
-            <a
-              href={link.href}
-              class="text-gray-800 dark:text-white hover:text-gray-600 dark:hover:text-gray-400"
-            >
-              {link.label}
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-
-    <!-- Redes Sociales y Theme Toggle -->
-    <div class="flex space-x-3 sm:space-x-5 items-center">
-      <a href="https://github.com/DavidUmiri">
-        <img
-          src="/portfolio-dauc/images/github.webp"
-          alt="GitHub David Umiri"
-          class="w-5 h-5 sm:w-6 sm:h-6"
-        />
-      </a>
-      <a href="https://linkedin.com/in/davidumiri">
-        <img
-          src="/portfolio-dauc/images/linkedin.webp"
-          alt="LinkedIn David Umiri"
-          class="w-5 h-5 sm:w-6 sm:h-6"
-        />
-      </a>
-      <div class="inline-block">
-        <ThemeToggle />
+        <ul
+          id="menu"
+          class="hidden sm:flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-5 items-center"
+        >
+          {
+            navLinks.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="text-gray-800 dark:text-white hover:text-gray-600 dark:hover:text-gray-400"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
       </div>
-      <!-- Language Selector movido al final -->
-      <div class="relative group">
-        <button id="langButton" class="flex items-center space-x-1">
+
+      <!-- CENTRO: logo centrado -->
+      <div class="flex-1 flex justify-center">
+        <a href="/portfolio-dauc" class="flex items-center">
+          <!-- Aumentado a tamaños responsivos: pequeño/mediano/grande -->
+          <img src="/portfolio-dauc/images/logo.png" alt="Logo" class="h-8 sm:h-10 md:h-12" />
+        </a>
+      </div>
+
+      <!-- DERECHA: redes, theme toggle, idioma (mantener todo) -->
+      <div class="flex space-x-3 sm:space-x-5 items-center">
+        <a href="https://github.com/DavidUmiri">
           <img
-            src={`/portfolio-dauc/images/${isEnglish ? "en" : "es"}.png`}
-            alt={isEnglish ? "English" : "Español"}
+            src="/portfolio-dauc/images/github.webp"
+            alt="GitHub David Umiri"
             class="w-5 h-5 sm:w-6 sm:h-6"
           />
-        </button>
-        <div
-          class="absolute right-0 mt-2 py-2 w-24 bg-white dark:bg-gray-800 rounded-md shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300"
-        >
-          <a
-            href="/portfolio-dauc"
-            class="flex items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
-          >
+        </a>
+        <a href="https://linkedin.com/in/davidumiri">
+          <img
+            src="/portfolio-dauc/images/linkedin.webp"
+            alt="LinkedIn David Umiri"
+            class="w-5 h-5 sm:w-6 sm:h-6"
+          />
+        </a>
+        <div class="inline-block">
+          <ThemeToggle />
+        </div>
+        <!-- Language Selector movido al final -->
+        <div class="relative group">
+          <button id="langButton" class="flex items-center space-x-1">
             <img
-              src="/portfolio-dauc/images/es.png"
-              alt="Español"
-              class="w-5 h-5 mr-2"
+              src={`/portfolio-dauc/images/${isEnglish ? "en" : "es"}.png`}
+              alt={isEnglish ? "English" : "Español"}
+              class="w-5 h-5 sm:w-6 sm:h-6"
             />
-            <span class="text-sm text-gray-800 dark:text-white">ES</span>
-          </a>
-          <a
-            href="/portfolio-dauc/en"
-            class="flex items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
+          </button>
+          <div
+            class="absolute right-0 mt-2 py-2 w-24 bg-white dark:bg-gray-800 rounded-md shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300"
           >
-            <img
-              src="/portfolio-dauc/images/en.png"
-              alt="English"
-              class="w-5 h-5 mr-2"
-            />
-            <span class="text-sm text-gray-800 dark:text-white">EN</span>
-          </a>
+            <a
+              href="/portfolio-dauc"
+              class="flex items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
+            >
+              <img
+                src="/portfolio-dauc/images/es.png"
+                alt="Español"
+                class="w-5 h-5 mr-2"
+              />
+              <span class="text-sm text-gray-800 dark:text-white">ES</span>
+            </a>
+            <a
+              href="/portfolio-dauc/en"
+              class="flex items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
+            >
+              <img
+                src="/portfolio-dauc/images/en.png"
+                alt="English"
+                class="w-5 h-5 mr-2"
+              />
+              <span class="text-sm text-gray-800 dark:text-white">EN</span>
+            </a>
+          </div>
         </div>
       </div>
     </div>
