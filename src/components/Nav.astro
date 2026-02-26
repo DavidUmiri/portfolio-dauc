@@ -1,15 +1,20 @@
 ---
-const navLinks = [
-  { href: "./", label: "Home" },
-  { href: "#code-projects", label: "Code Projects" },
-  { href: "#wordpress-projects", label: "WordPress Projects" },
-];
-
 import ThemeToggle from "./ThemeToggle.astro";
 
-// Añadir el estado inicial del idioma
+// Determinar idioma en el lado del servidor usando la ruta actual
 const currentPath = Astro.url.pathname;
 const isEnglish = currentPath.includes("/en"); // Si no está en /en, está en español
+
+// Enlaces del nav con etiquetas según idioma
+const navLinks = isEnglish
+  ? [
+      { href: "#code-projects", label: "Code Projects" },
+      { href: "#wordpress-projects", label: "WordPress Projects" },
+    ]
+  : [
+      { href: "#code-projects", label: "Proyectos de Código" },
+      { href: "#wordpress-projects", label: "Proyectos WordPress" },
+    ];
 ---
 
 <nav
@@ -53,7 +58,7 @@ const isEnglish = currentPath.includes("/en"); // Si no está en /en, está en e
       <div class="flex-1 flex justify-center">
         <a href="/portfolio-dauc" class="flex items-center">
           <!-- Aumentado a tamaños responsivos: pequeño/mediano/grande -->
-          <img src="/portfolio-dauc/images/logo.png" alt="Logo" class="h-12 sm:h-16 md:h-20" />
+          <img src="/portfolio-dauc/images/codigo.webp" alt="Logo" class="h-6 sm:h-8 md:h-10" />
         </a>
       </div>
 
@@ -167,8 +172,9 @@ const isEnglish = currentPath.includes("/en"); // Si no está en /en, está en e
     const closeBtn = document.getElementById("close-btn");
     const mobileMenu = document.getElementById("mobile-menu");
     const menuItems = document.querySelectorAll(".menu-item");
+    // los enlaces de idioma apuntan a las rutas completas de la app
     const languageLinks = document.querySelectorAll(
-      '[href="/en"], [href="/es"]'
+      '[href="/portfolio-dauc"], [href="/portfolio-dauc/en"]'
     );
 
     // Verificar que los elementos existan
@@ -233,27 +239,13 @@ const isEnglish = currentPath.includes("/en"); // Si no está en /en, está en e
         setTimeout(closeMenu, 200);
       });
     });
+    // No es necesario interceptar los clicks: los <a> ya llevan
+    // al lugar correcto. Sin embargo dejamos el detector si más adelante
+    // queremos modificar la ruta dinámicamente.
+    // (ya no se previene el comportamiento por defecto.)
     languageLinks.forEach((link) => {
       if (!(link instanceof HTMLAnchorElement)) return;
-
-      link.addEventListener("click", (e) => {
-        e.preventDefault();
-        const href = link.getAttribute("href");
-        if (!href) return;
-
-        // Si el href es /portfolio-dauc (español), usarlo directamente
-        if (href === "/portfolio-dauc") {
-          window.location.href = href;
-          return;
-        }
-
-        // Para inglés, mantener la lógica existente
-        const newLang = "en"; // Solo tenemos /en como opción adicional
-        const currentPath = window.location.pathname;
-
-        let newPath = `/portfolio-dauc/en`;
-        window.location.href = newPath;
-      });
+      // no hacemos nada, solo dejamos el listener como placeholder
     });
 
     document.querySelectorAll("nav a").forEach((link) => {
