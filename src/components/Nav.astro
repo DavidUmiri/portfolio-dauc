@@ -54,11 +54,16 @@ const navLinks = isEnglish
         </ul>
       </div>
 
-      <!-- CENTRO: logo centrado -->
+      <!-- CENTRO: logo centrado con texto/emoji -->
       <div class="flex-1 flex justify-center">
-        <a href="/portfolio-dauc" class="flex items-center">
-          <!-- Aumentado a tamaños responsivos: pequeño/mediano/grande -->
-          <img src="/portfolio-dauc/images/codigo.webp" alt="Logo" class="h-6 sm:h-8 md:h-10" />
+        <a
+          href="/portfolio-dauc"
+          class="flex items-center space-x-2 text-gray-900 dark:text-white text-base sm:text-lg md:text-xl font-semibold"
+          aria-label="Inicio"
+        >
+          <span class="text-xl sm:text-2xl">🖥️</span>
+          <span>David Umiri</span>
+          <span class="text-xl sm:text-2xl">🚀</span>
         </a>
       </div>
 
@@ -127,7 +132,7 @@ const navLinks = isEnglish
     class="fixed top-0 left-0 w-2/3 h-full bg-white dark:bg-gray-800 z-20 transition-all transform -translate-x-full sm:hidden duration-300 ease-in-out opacity-0 shadow-lg"
   >
     <div class="flex justify-between items-center p-4">
-      <div class="text-gray-800 dark:text-white text-xl">Menu</div>
+      <div class="text-gray-800 dark:text-white text-xl">Menú 🤖</div>
       <button
         id="close-btn"
         class="text-gray-800 dark:text-white focus:outline-none"
@@ -263,5 +268,4 @@ const navLinks = isEnglish
     });
   });
 </script>
-});
 

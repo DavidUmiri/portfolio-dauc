@@ -21,45 +21,50 @@ const {
 } = Astro.props;
 ---
 
-<li
-  class="bg-white p-4 rounded-lg shadow-md space-y-4 flex flex-col items-center justify-between w-full max-w-sm hover:scale-105 transition-all duration-300 ease-in-out"
->
-  <!-- Project image -->
-  <Image
-    src={image}
-    alt={title}
-    width={400}
-    height={192}
-    class="w-full h-48 object-cover rounded-lg mb-4"
-    loading={imageLoading as "eager" | "lazy"}
-  />
+<li class="w-full max-w-sm">
+  <a
+    href={link}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="group block bg-white p-4 rounded-lg shadow-md space-y-4 flex flex-col items-center justify-between w-full h-full transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+    aria-label={`Abrir proyecto ${title}`}
+  >
+    <!-- Project image -->
+    <Image
+      src={image}
+      alt={title}
+      width={400}
+      height={192}
+      class="w-full h-48 object-cover rounded-lg mb-4"
+      loading={imageLoading as "eager" | "lazy"}
+    />
 
-  <!-- Title -->
-  <h2 class="text-lg font-semibold text-center truncate">{title}</h2>
+    <!-- Title -->
+    <h2 class="text-lg font-semibold text-center truncate text-gray-900 dark:text-white">
+      {title}
+    </h2>
 
-  <!-- Description -->
-  <p class="text-sm text-gray-600 text-center line-clamp-3">{description}</p>
+    <!-- Description -->
+    <p class="text-sm text-gray-600 dark:text-gray-300 text-center line-clamp-3">
+      {description}
+    </p>
 
-  <!-- Link -->
-  <a href={link} class="text-blue-600 hover:text-blue-800 text-center mt-2">
-    {link}
+    <!-- Technologies -->
+    <ul class="flex space-x-2 mt-2">
+      {
+        technologies.map((technology) => (
+          <li>
+            <Image
+              src={`/portfolio-dauc/images/${technology.toLowerCase()}.webp`}
+              alt={technology}
+              width={32}
+              height={32}
+              class="w-8 h-8"
+              loading={techLoading as "eager" | "lazy"}
+            />
+          </li>
+        ))
+      }
+    </ul>
   </a>
-
-  <!-- Technologies -->
-  <ul class="flex space-x-2 mt-2">
-    {
-      technologies.map((technology) => (
-        <li>
-          <Image
-            src={`/portfolio-dauc/images/${technology.toLowerCase()}.webp`}
-            alt={technology}
-            width={32}
-            height={32}
-            class="w-8 h-8"
-            loading={techLoading as "eager" | "lazy"}
-          />
-        </li>
-      ))
-    }
-  </ul>
 </li>
