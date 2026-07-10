@@ -1,11 +1,10 @@
 import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
+import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  integrations: [tailwind({
-    // Configure Tailwind Options
-    config: { path: './tailwind.config.js' }
-  })],
+  vite: {
+    plugins: [tailwindcss()],
+  },
   site: 'https://davidumiri.github.io',
   base: '/portfolio-dauc',
 });
